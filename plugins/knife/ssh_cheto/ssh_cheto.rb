@@ -141,9 +141,7 @@ class Chef
           session_opts[:password] = config[:ssh_password] if config[:ssh_password]
 
           unless config[:proxy_connect_command].nil?
-            #proxy = Net::SSH::Proxy::Command.new("ProxyCommand #{config[:proxy_connect_command]}")
             session_opts[:proxy] = Net::SSH::Proxy::Command.new(config[:proxy_connect_command])
-            #@session ||= Net::SSH::Multi.start(:concurrent_connections => config[:concurrency], :proxy => proxy, :on_error => ssh_error_handler)
           end
 
           if config[:no_host_key_verify]
@@ -195,10 +193,6 @@ class Chef
         @password ||= ui.ask("Enter your password: ") { |q| q.echo = false }
       end
 
-      # Present the prompt and read a single line from the console. It also
-      # detects ^D and returns "exit" in that case. Adds the input to the
-      # history, unless the input is empty. Loops repeatedly until a non-empty
-      # line is input.
       def read_line
         loop do
           command = reader.readline("#{ui.color('knife-ssh>', :bold)} ", true)
