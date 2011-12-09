@@ -14,6 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+#
+# NOTE:
+#       The server needs to have installed OMSA (omreport command) and SMBIOS 
+# (smbios-sys-info command) applications in order to use this plugin.
+#       Please remember to add OS/dell.rb plugin also (for example 
+# linux/dell.rb). 
 
 provides "dell"
 
