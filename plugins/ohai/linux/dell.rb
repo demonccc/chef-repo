@@ -145,6 +145,7 @@ unless dell.nil? || !(dmi[:system][:manufacturer].eql?("Dell Inc."))
         unless element.empty?
           if element.include?(" : ")
             key, value = element.split(" : ")
+            value = "" if value.nil?
             key.strip!
             key.downcase!
             key.gsub!("(", "_")
