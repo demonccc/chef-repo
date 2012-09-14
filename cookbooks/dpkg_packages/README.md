@@ -53,32 +53,32 @@ For example:
 
 debian item of the pkgs databag:
 
-  {
-    "id"    : "debian",
-    "pkgs"  : {
-      "rsync": true,
-      "acl": true,
-      "bzip2": { "action": "install", "options": "--force-yes", "platform_version": "> 6.0" }, 
-      "less": true,
-      "unzip": true,
-      "zip": true,
-      "dnsutils": { "version": "1:9.7.3.dfsg-1~squeeze5", "action": "install" },
-      "whois": true,
-      "iproute": true,
-      "tcpdump": true,
-      "nmap": false,
-      "curl": true,
-      "wget": true,
-      "ethtool": true,
-      "lsb-release": { "action": "install", "options": "--force-yes" },
-      "screen": true,
-      "gzip": true,
-      "tar": true,
-      "bash-completion": true,
-      "psmisc": true,
-      "strace": { "action": "remove" } 
+    {
+      "id"    : "debian",
+      "pkgs"  : {
+        "rsync": true,
+        "acl": true,
+        "bzip2": { "action": "install", "options": "--force-yes", "platform_version": "> 6.0" }, 
+        "less": true,
+        "unzip": true,
+        "zip": true,
+        "dnsutils": { "version": "1:9.7.3.dfsg-1~squeeze5", "action": "install" },
+        "whois": true,
+        "iproute": true,
+        "tcpdump": true,
+        "nmap": false,
+        "curl": true,
+        "wget": true,
+        "ethtool": true,
+        "lsb-release": { "action": "install", "options": "--force-yes" },
+        "screen": true,
+        "gzip": true,
+        "tar": true,
+        "bash-completion": true,
+        "psmisc": true,
+        "strace": { "action": "remove" } 
+      }
     }
-  }
 
 # Attributes
 
