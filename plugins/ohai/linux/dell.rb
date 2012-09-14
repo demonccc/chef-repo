@@ -1,5 +1,5 @@
 #
-# Author:: Claudio Cesar Sanchez Tejeda (<demonccc@gmail.com>)
+# Author:: Claudio Cesar Sanchez Tejeda <demonccc@gmail.com>
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");

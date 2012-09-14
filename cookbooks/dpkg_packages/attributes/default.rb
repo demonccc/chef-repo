@@ -1,13 +1,16 @@
 #
 # Author:: Claudio Cesar Sanchez Tejeda <demonccc@gmail.com>
-# License:: Apache License, Version 2.0
+# Cookbook Name:: dpkg_packages
+# Attributes:: default
+#
+# Copyright 2012, Claudio Cesar Sanchez Tejeda
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,13 +18,8 @@
 # limitations under the License.
 #
 
-provides "linux/dpkg"
+default['dpkg_packages']['pkgs'] = {} 
 
-require_plugin "platform_family"
-
-dpkg Mash.new
-
-if platform_family.eql?("debian")
-  dpkg_output = %x[dpkg-query -W -f='dpkg["${Package}"] = { "version" => "${Version}", "status" => "${Status}" }\n']
-  eval(dpkg_output)
-end
+default['dpkg_packages']['data_bag'] = false
+#default['dpkg_packages']['data_bag']['name'] = 'pkgs'
+#default['dpkg_packages']['data_bag']['items'] = [ node['platform'] ]
