@@ -30,7 +30,7 @@ if node['dpkg_packages']['data_bag']
     db_pkgs = begin 
       data_bag_item(node['dpkg_packages']['data_bag']['name'], data_item)
     rescue => ex
-      Chef::Log.info("Data bag #{bag.join('/')} not found (#{ex}), so skipping")
+      Chef::Log.info("Data bag #{node['dpkg_packages']['data_bag']['name']} not found (#{ex}), so skipping")
       Hash.new
     end
     pkgs.update(db_pkgs["pkgs"])

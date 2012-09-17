@@ -43,8 +43,6 @@ Processes a list of *pkgs* (which is emtpy by default) to be installed.
 Use this recipe when you have a list of packages in
 `node['dpkg_packages']['pkgs']`.
 
-## data_bag
-
 To use the databag feature, you should create a data bag (the cookbook uses
 `pkgs` by default) with items where are defined what packages will be
 processed (the default item is the platform name).
