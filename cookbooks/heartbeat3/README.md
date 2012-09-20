@@ -22,7 +22,7 @@ There are **no** external cookbook dependencies.
 
 # Installation
 
-Just place the dpkg_packages directory in your chef cookbook directory and
+Just place the heartbeat3 directory in your chef cookbook directory and
 upload it to your Chef server.
 
 # Usage
