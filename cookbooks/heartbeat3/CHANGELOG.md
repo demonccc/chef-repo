@@ -1,4 +1,4 @@
-## 0.4.2 (October 19, 2012)
+## 0.4.3 (October 19, 2012)
 
 Fixed some bugs in the sanitized service providers (thanks to realloc@jabber.ru).
 
