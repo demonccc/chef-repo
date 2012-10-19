@@ -27,7 +27,7 @@ require 'chef/provider/service/debian'
 class Chef
   class Provider
     class Service
-      class Debian_Sanitized < Chef::Provider::Service::Debian
+      class Debian_Sanitized < Chef::Provider::Service::Init::Debian
   
         def managed_service
           Chef::Log.info("This action couldn't be performed because the service #{@new_resource.service_name} is managed by heartbeat.")

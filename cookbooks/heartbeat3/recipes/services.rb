@@ -25,13 +25,13 @@ if node["heartbeat"]["services"]
     service srv do
       case node['platform']
       when "debian"
-        provider Chef::Provider::Service::Debian_Sanitized 
+        provider Chef::Provider::Service::Init::Debian::Debian_Sanitized 
       when "ubuntu"
-        provider Chef::Provider::Service::Upstart_Sanitized
+        provider Chef::Provider::Service::Upstart::Upstart_Sanitized
       when "redhat","centos","scientific","fedora"
-        provider Chef::Provider::Service::Redhat_Sanitized
+        provider Chef::Provider::Service::Init::Redhat::Redhat_Sanitized
       else
-        provider Chef::Provider::Service::Init_Sanitized
+        provider Chef::Provider::Service::Init::Init_Sanitized
       end
     end
   end

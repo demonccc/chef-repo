@@ -22,7 +22,7 @@ There are **no** external cookbook dependencies.
 
 # Installation
 
-Just place the heartbeat3 directory in your chef cookbook directory and
+Just place the dpkg_packages directory in your chef cookbook directory and
 upload it to your Chef server.
 
 # Usage
@@ -30,6 +30,10 @@ upload it to your Chef server.
 Simply add recipe[heartbeat] to the run list of the servers that will integrate 
 the heartbeat cluster. You can edit the file file/default/authkeys in order to add 
 more security to your heartbeat cluster.
+
+If you will install the services that will be managed by heartbeat with some recipes,
+you should add the recipe[heartbeat::services] to the node run list. This recipe 
+sanitizes the services in order to they can't started or stopped by the service resource.
 
 This cookbook doesn't have templates, all configuration files are generated dinamically 
 depending of the keys and their values of the attributes hashes.
@@ -70,11 +74,15 @@ And the following /etc/ha.d/haresources file:
 
 ## default
 
-Installs and configures Heartbeat according the settings of the node attributes. Also it disables de services set in the `node['heartbeat']['services']` attribute.
+Installs and configures Heartbeat according the settings of the node attributes. 
+Also it disables de services set in the `node['heartbeat']['services']` attribute.
 
 ## services
 
-This recipe will sanitize the services that are set in the `node['heartbeat']['services']` attribute in order to Chef doesn't start them in the inactive node.
+This recipe will sanitize the services that are set in the `node['heartbeat']['services']` 
+attribute in order to Chef doesn't start them in the inactive node. This recipe needs to 
+be put before that the recipe that will install and configure the service that will be 
+managed by heartbeat.
 
 # Attributes
 

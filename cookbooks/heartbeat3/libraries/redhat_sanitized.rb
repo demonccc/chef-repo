@@ -26,7 +26,7 @@ require 'chef/provider/service/redhat'
 class Chef
   class Provider
     class Service
-      class Redhat_Sanitized < Chef::Provider::Service::Redhat
+      class Redhat_Sanitized < Chef::Provider::Service::Init::Redhat
 
         def managed_service
           Chef::Log.info("This action couldn't be performed because the service #{@new_resource.service_name} is managed by heartbeat.")
