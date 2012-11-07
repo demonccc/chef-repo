@@ -22,18 +22,8 @@
   package pkg
 end
 
-if node["spamassassin"]["enabled"]
-  
-  service "spamassassin" do
-    action [ :enable, :start ]
-  end
-
-else
-
-  service "spamassassin" do
-    action [ :disable, :stop ]
-  end
-
+service "spamassassin" do
+  action node["spamassassin"]["enabled"] ? [:enable, :start] : [ :disable, :stop ]
 end
 
 template "/etc/default/spamassassin" do
@@ -44,4 +34,3 @@ template "/etc/default/spamassassin" do
     notifies :restart, "service[spamassassin]"
   end
 end
-
