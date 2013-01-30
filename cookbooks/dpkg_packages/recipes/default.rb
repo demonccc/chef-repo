@@ -40,7 +40,7 @@ end
 pkgs.update(node['dpkg_packages']['pkgs']) if node['dpkg_packages']['pkgs']
 
 pkgs.each do |name, attrs|
-  pkg_action = :install
+  pkg_action = "install"
   package name do
     ignore_failure true
     case attrs
@@ -55,13 +55,14 @@ pkgs.each do |name, attrs|
           eval("pkg_action = :nothing unless node[\"platform_version\"] #{operator} \"#{value}\"")
         end
       end
-      if attrs["version"]
-        if pkg_action == :install
+      if pkg_action.eql?("install")
+        if attrs["version"]
           f.run_action(:delete) unless debian_package_version(name, attrs["version"])
+        else
+          f.run_action(:delete) unless debian_package_info(name)["installed"]
         end
-        version attrs["version"]
       end
-      %w{source options}.each do |attr|
+      %w{version source options}.each do |attr|
         send(attr, attrs[attr])  if attrs[attr]
       end
     else

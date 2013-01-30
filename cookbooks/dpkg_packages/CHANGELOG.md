@@ -1,6 +1,6 @@
-## 0.1.2 (September 17, 2012)
+## 0.1.3 (Jan 30, 2013)
 
-Corrected some bugs.
+Fixed an issue that do not perform `apt-get update` when the package is not installed.
 
 [@demonccc]: https://github.com/demonccc
 
