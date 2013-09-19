@@ -21,7 +21,7 @@ require_plugin "platform"
 
 rpm Mash.new
 
-if %w{ rhel fedora suse }.include?(platform_family) or %w{ redhat fedora centos suse }.include?(platform)
+if %w{ rhel fedora suse pld }.include?(platform_family) or %w{ redhat fedora centos suse }.include?(platform)
   rpm_output = %x[ rpm -qa --queryformat 'rpm\\\["%{NAME}"\\\] = { "version" => "%{VERSION}", "release" => "%{RELEASE}" \\\}\n' ]
   eval(rpm_output)
 end
