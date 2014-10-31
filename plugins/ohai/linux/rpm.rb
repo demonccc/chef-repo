@@ -15,13 +15,15 @@
 # limitations under the License.
 #
 
-provides "linux/rpm"
+Ohai.plugin(:Rpm) do
+  provides "linux/rpm"
+  depends "platform"
 
-require_plugin "platform"
-
-rpm Mash.new
-
-if %w{ rhel fedora suse }.include?(platform_family) or %w{ redhat fedora centos suse }.include?(platform)
-  rpm_output = %x[ rpm -qa --queryformat 'rpm\\\["%{NAME}"\\\] = { "version" => "%{VERSION}", "release" => "%{RELEASE}" \\\}\n' ]
-  eval(rpm_output)
+  collect_data(:default) do
+    rpm Mash.new
+    if %w{ rhel fedora suse }.include?(platform_family) or %w{ redhat fedora centos suse }.include?(platform)
+    rpm_output = %x[ rpm -qa --queryformat 'rpm\\\["%{NAME}"\\\] = { "version" => "%{VERSION}", "release" => "%{RELEASE}" \\\}\n' ]
+    eval(rpm_output)
+    end
+  end
 end
