@@ -7,6 +7,6 @@ version           "0.1.1"
 
 recipe "spamassassin", "Installs and configures spamassassin"
 
-%w{ debian ubuntu }.each do |os|
+%w{ debian ubuntu redhat centos }.each do |os|
   supports os
 end
