@@ -18,8 +18,12 @@
 # limitations under the License.
 #
 
-%w{ spamassassin razor pyzor spamc }.each do |pkg|
-  package pkg
+if platform_family?('rhel')
+    package "spamassassin"
+else
+  %w{ spamassassin razor pyzor spamc }.each do |pkg|
+    package pkg
+  end
 end
 
 service "spamassassin" do
