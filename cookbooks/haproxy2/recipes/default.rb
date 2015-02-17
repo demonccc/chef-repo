@@ -57,11 +57,6 @@ template "/etc/default/haproxy" do
   notifies :restart, "service[haproxy]"
 end
 
-service "haproxy" do
-  supports :status => true, :restart => true, :reload => true
-  action [ :enable, :start ]
-end
-
 haproxy_cfg_config = "# File managed by Chef\n# Don't edit it manually!\n\n"
 
 haproxy_cfg_config += "global\n"
@@ -126,4 +121,9 @@ file "/etc/haproxy/haproxy.cfg" do
   mode 0644
   content  haproxy_cfg_config
   notifies :reload, "service[haproxy]"
+end
+
+service "haproxy" do
+  supports :status => true, :restart => true, :reload => true
+  action [ :start, :enable ]
 end
