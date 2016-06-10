@@ -36,7 +36,7 @@ of the attributes.
 The global and the defaults sections, the listens, the frontends and the 
 backends follow the same rules regarding how the cookbook will generate 
 the configuration file. The idea is generate the config file setting attributes
-in the node, or trhough roles avoiding the templates.
+in the node, or through roles avoiding the templates.
 
 The global and defaults sections are hashes with which their pair of keys and 
 values are the settings that will applied on them.
